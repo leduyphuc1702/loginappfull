@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,4 +26,11 @@
     src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
     crossorigin></script>
   <script>var Alert = ReactBootstrap.Alert;</script>
+  <script>
+    window.addEventListener('error', function (e) {
+        if (e.target.tagName.toLowerCase() === 'link' && e.target.rel === 'stylesheet') {
+            window.location.href = '/';
+        }
+    });
+</script>
 </html>
